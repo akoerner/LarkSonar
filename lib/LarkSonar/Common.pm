@@ -1,4 +1,4 @@
-package perfSONAR_PS::Common;
+package LarkSonar::Common;
 
 our $VERSION = 1.0;
 
@@ -68,7 +68,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 =end OnTimeDetect License
 =cut
 
-use Exporter;
+
 use threads;
 use perfSONAR_PS::Client::LS;
 use perfSONAR_PS::Client::MA;
@@ -92,10 +92,13 @@ within the perfSONAR framework.
 
 =cut
 
-our @EXPORT = qw(get_gls_projects list_all_router_interfaces_with_collected_SNMP_data get_ls_sitelist);
 
-use base 'Exporter';
-our @EXPORT = qw( get_gls_projects);
+
+
+require Exporter;
+@ISA = qw(Exporter);
+@EXPORT = qw(et_gls_projects get_gls_sitelist);
+
 
 
 sub initiate_gls{
@@ -283,21 +286,16 @@ sub get_gls_projects{
 	($gLs) = @_;
 	
 	my $array_size = 0;
-
 	my $xls_keyword = get_gls_keyword();
-	#print $gLs;
 	my $gLSClient = initiate_gls($gLs);
 	
 	my $gLSResult = query_to_gls($gLSClient,$xls_keyword);
 	
-	if ($gLSResult eq "")
-	{
+	if ($gLSResult eq ""){
 		return;
 	}
 	my @projects = parse_query_keyword($gLSResult);
-	my @projects_hash;
-	
-	#@project_list = map {@$_} @$project_list;
+
 	for my $project(@projects){
 		my $find = "project:";
 		my $replace = "";
@@ -308,7 +306,7 @@ sub get_gls_projects{
 	
 	my $json = JSON->new->allow_nonref;
 	my $encoded = $json->encode($hash);
-	
+	print "test";
 	return $encoded;
 	#print scalar(@projects);
 }
