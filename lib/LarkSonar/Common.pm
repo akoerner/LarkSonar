@@ -97,7 +97,7 @@ within the perfSONAR framework.
 
 require Exporter;
 @ISA = qw(Exporter);
-@EXPORT = qw(et_gls_projects get_gls_sitelist);
+@EXPORT = qw(et_gls_projects get_ls_sitelist);
 
 
 
