@@ -306,7 +306,7 @@ sub get_gls_projects{
 	
 	my $json = JSON->new->allow_nonref;
 	my $encoded = $json->encode($hash);
-	print "test";
+
 	return $encoded;
 	#print scalar(@projects);
 }
