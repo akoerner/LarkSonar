@@ -589,7 +589,7 @@ sub list_all_endpoints_with_one_way_latency_data_available{
 	my $json = JSON->new->allow_nonref;
 	my $encoded = $json->encode($hash);
 	
-	print $encoded;
+	#return $encoded;
 }
 
 sub get_throughput_between_two_endpoints{
