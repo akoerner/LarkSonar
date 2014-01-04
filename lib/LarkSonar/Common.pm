@@ -97,7 +97,7 @@ within the perfSONAR framework.
 
 require Exporter;
 @ISA = qw(Exporter);
-@EXPORT = qw(et_gls_projects get_ls_sitelist list_all_endpoints_with_throughput_data_available get_throughput_between_two_endpoints);
+@EXPORT = qw(et_gls_projects get_ls_sitelist list_all_endpoints_with_throughput_data_available get_throughput_between_two_endpoints list_all_endpoints_with_one_way_latency_data_available);
 
 
 
@@ -649,8 +649,7 @@ sub get_throughput_between_two_endpoints{
 	
 	my $json = JSON->new->allow_nonref;
 	my $encoded = $json->encode($hash);
-	
-	print $encoded;
+	return $encoded;
 }
 
 sub get_one_way_latency_between_two_endpoints{

@@ -6,7 +6,7 @@ use warnings;
 use LarkSonar::Common;
 
 my $site = "perfsonar.icecube.wisc.edu";
-my $source = "psonarl.fnal.gov";
+my $source = "psonar1.fnal.gov";
 my $destination = $site;
 my $startUnixTimestamp =  time() - 36000000000;
 my $endUnixTimestamp = time();
